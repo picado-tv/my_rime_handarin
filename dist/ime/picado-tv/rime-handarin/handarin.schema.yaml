@@ -25,6 +25,7 @@ engine:
     - ascii_segmentor
     - matcher
     - "affix_segmentor@luna_pinyin"
+    - "affix_segmentor@stroke"
     - abc_segmentor
     - punct_segmentor
     - fallback_segmentor
@@ -33,6 +34,7 @@ engine:
     - punct_translator
     - script_translator
     - "script_translator@luna_pinyin"
+    - "script_translator@stroke"
 handarin_reverse_lookup:
   comment_format:
     - "xform/$/〕/"
@@ -50,6 +52,7 @@ handarin_reverse_lookup:
   overwrite_comment: true
   tags:
     - luna_pinyin
+    - stroke
 key_binder:
   bindings:
     - {accept: "Control+p", send: Up, when: composing}
@@ -90,7 +93,7 @@ luna_pinyin:
     - "xform/([nl])v/$1ü/"
     - "xform/([nl])ue/$1üe/"
     - "xform/([jqxy])v/$1u/"
-  prefix: "`"
+  prefix: "~"
   suffix: ";"
   tag: luna_pinyin
   tips: "〔普通話〕"
@@ -169,8 +172,9 @@ recognizer:
   import_preset: default
   patterns:
     email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
-    luna_pinyin: "^`[a-z']*;?$"
+    luna_pinyin: "^~[a-z']*;?$"
     punct: "^/([0-9]0?|[a-z]+)$"
+    stroke: "^`[hspnz]*;?$"
     uppercase: ""
     url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
 schema:
@@ -178,10 +182,11 @@ schema:
     - "@rockpicado"
   dependencies:
     - luna_pinyin
+    - stroke
   description: "Use Korean Hangul to Write Mandarin"
   name: "韓官話"
   schema_id: handarin
-  version: 1.0.231120
+  version: 1.0.231123
 speller:
   algebra:
     - "derive/^s([iuyblP])/d$1/"
@@ -190,6 +195,15 @@ speller:
     - "abbrev/^([a-z]).+$/$1/"
   alphabet: zyxwvutsrqponmlkjihgfedcbaQWERTOP
   delimiter: " '"
+stroke:
+  dictionary: stroke
+  enable_completion: true
+  preedit_format:
+    - "xlit/hspnz/一丨丿丶乙/"
+  prefix: "`"
+  suffix: "'"
+  tag: stroke
+  tips: "〔筆畫〕"
 switches:
   - name: ascii_mode
     reset: 0
