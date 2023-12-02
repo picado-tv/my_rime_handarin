@@ -77,6 +77,7 @@ const AsyncEditor = defineAsyncComponent(() => import('../components/MyEditor.vu
       id="container"
       v-model:value="text"
       type="textarea"
+      :input-props="{ autocapitalize: 'off' }"
       :rows="15"
       clearable
       @blur="onBlur"
