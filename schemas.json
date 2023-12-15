@@ -5,7 +5,7 @@
     "group": "音码",
     "emoji": true,
     "target": "picado-tv/rime-handarin",
-    "dependencies": ["luna_pinyin", "stroke"],
+    "dependencies": ["luna_pinyin"],
     "license": "GPL-3.0-only"
   },
   {
