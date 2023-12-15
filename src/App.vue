@@ -18,7 +18,22 @@ const osThemeRef = useOsTheme()
 <template>
   <my-pwa />
   <n-config-provider :theme="osThemeRef === 'dark' ? darkTheme : null">
-    <my-layout>
+    <n-notification-provider :max="1">
+      <n-dialog-provider>
+        <n-message-provider>
+          <router-view v-slot="{ Component }">
+            <keep-alive>
+              <component :is="Component" />
+            </keep-alive>
+          </router-view>
+        </n-message-provider>
+      </n-dialog-provider>
+    </n-notification-provider>
+    <!-- <div style="cursor: pointer; text-align: center; margin-top: 16px">
+      <n-h1> 韩官话 演示<br/><span style="font-size: smaller"> 한관화 연시 </span> </n-h1>
+    </div> -->
+
+    <!-- <my-layout>
       <template #header>
         <div style="padding-left: 24px; display: flex; align-items: center; cursor: pointer;">
           <img src="/LibreService.svg" style="width: 48px; height: 48px;">
@@ -49,6 +64,6 @@ const osThemeRef = useOsTheme()
           <p> Commit <a class="n-a" href="https://github.com/LibreService/my_rime/commit/8bd65bd024189bdd7aad0b987d0b727a292d9ee0" target="_blank" style="--n-text-color: #18a058; --n-bezier: cubic-bezier(.4, 0, .2, 1);">8bd65bd</a> · Built at 11/22/2023, 6:53:37 AM</p>
         </div>
       </template>
-    </my-layout>
+    </my-layout> -->
   </n-config-provider>
 </template>
