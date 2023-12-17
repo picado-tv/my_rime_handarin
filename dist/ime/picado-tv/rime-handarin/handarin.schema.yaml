@@ -185,6 +185,7 @@ schema:
   version: 1.1.231215
 speller:
   algebra:
+    - "xform/^([JKLNM ]+)$/\\L$1\\E/"
     - "derive/^s([iuyblP])/d$1/"
     - "derive/^f([iuyblP])/d$1/"
     - "derive/^f(k|h|n|m|o|hl)/s$1/"
